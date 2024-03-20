@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+  constructor( private router : Router ){}
+
+  logout() {
+    this.router.navigate(['/Login']);
+  }
+
+  alInicio(){
+    this.router.navigate(['/Home']);
+  }
 }

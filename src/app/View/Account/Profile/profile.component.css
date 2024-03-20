@@ -32,6 +32,7 @@
   align-items: center;
   height: 50px;
   margin-top: -15px;
+  padding-top: 15px;
 }
 .data-user {
   display: flex;
@@ -91,6 +92,24 @@ small {
   font-weight: 600;
 }
 
+.bt{
+  padding: 10px 20px ;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
+
+.bt:hover{
+  background-color: var(--verde);
+} 
+
+.bt:hover i {
+  color: #fff;
+}
+
+
+
 @media screen and (max-width: 767px) {
     .cont {
         height: auto;
@@ -104,3 +123,4 @@ small {
         flex-direction: column;
     }
 }
+
