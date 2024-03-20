@@ -8,9 +8,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LoginComponent } from './View/Account/login/login.component';
 import { ProfileComponent } from './View/Account/Profile/profile.component';
 import { HomeComponent } from './View/Home/home.component';
+
+//primeng
+import { ButtonModule } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
 @NgModule({
   declarations: [AppComponent, LoginComponent, ProfileComponent, HomeComponent],
-  imports: [BrowserModule, CommonModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    AppRoutingModule,
+    ButtonModule,
+    DividerModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
