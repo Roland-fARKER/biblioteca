@@ -13,12 +13,19 @@
                 <li>
                     <a routerLink="/Login">Login</a>
                 </li>
+                <li>
+                    <a (click)="op.toggle($event)"><span class="ocul">Notificaciones</span> <i class="fas fa-bell mar"
+                            style="font-size: 1.5rem;" pBadge value="1"></i></a>
+                </li>
+                <p-overlayPanel #op>
+                   <p>Notificaciones</p>
+                </p-overlayPanel>
             </ul>
         </nav>
         <label for="nav_check" class="hamburger">
             <div></div>
             <div></div>
-            <div></div>    
+            <div></div>
         </label>
     </header>
     <div class="ban">
@@ -29,5 +36,17 @@
     </div>
 </div>
 
-<p-button label="Check" icon="fas fa-lock"></p-button>
+
+<div class="search-cont">
+    <div  class="search">
+        <p-inputGroup>
+            <input type="text" pInputText placeholder="Buscar" />
+            <button type="button" pButton icon="fas fa-search"></button>
+        </p-inputGroup>
+    </div>
+</div>
+
+<app-resultados></app-resultados>
+
+<app-footer/>
 
