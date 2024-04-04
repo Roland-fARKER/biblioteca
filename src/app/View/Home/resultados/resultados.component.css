@@ -1,42 +1,55 @@
-.card{
-    margin: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    border: 2px solid black;
-    box-shadow: 4px 4px black;
-    transition: 0.3s;
-    background-color: #fff;
+.card {
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 4px 4px black;
+  transition: 0.3s;
+  background-color: #fff;
 }
 
-img{
-    width: 100px;
+img {
+  width: 100px;
 }
 
-.flex{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.flex1 {
+  display: flex;
+  gap: 10px;
 }
 
-p{
-    margin: 5px;
+.mt {
+  margin-top: 15px;
 }
 
-.text-amarillo{
-    font-size: 1.5rem;
-    color: gold;
-    cursor: pointer;
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.cont-res{
-   display: grid;
-   gap:  10px;
-   grid-template-columns: repeat(3, 1fr);
-   padding: 10px 20px;
+p {
+  margin: 5px;
+}
+
+.text-amarillo {
+  font-size: 1.5rem;
+  color: gold;
+  cursor: pointer;
+}
+
+.cont-res {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px 20px;
 }
 
 @media screen and (max-width: 767px) {
-    .cont-res{
-        grid-template-columns: repeat(1, 1fr);
-     }   
+  .cont-res {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 10px 10px;
+  }
+}
+:host ::ng-deep .p-button {
+  background-color: var(--verde) !important;
 }

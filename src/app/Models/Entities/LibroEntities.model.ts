@@ -7,4 +7,5 @@ export interface LibroEntitie{
     anioPublicacion?: number;
     nombreCategoria?: string;  
     ejemplaresDisponible: number;
+    urlimage?: string;
 }

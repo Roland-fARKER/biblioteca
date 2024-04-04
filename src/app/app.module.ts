@@ -23,6 +23,8 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
+import { TagModule } from 'primeng/tag';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import { ToastModule } from 'primeng/toast';
     InputGroupAddonModule,
     InputTextModule,
     ToastModule,
-    FormsModule
+    FormsModule,
+    TagModule
   ],
   providers: [],
   bootstrap: [AppComponent],
