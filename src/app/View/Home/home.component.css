@@ -142,3 +142,25 @@ li {
 a{
   cursor: pointer;
 }
+
+.noti-cont{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 280px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.novisto{
+  background-color: var(--verde2);
+}
+
+.visto{
+  border: 2px solid var(--verde2);
+}
+
+.derecha{
+  text-align: right;
+}

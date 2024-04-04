@@ -15,10 +15,22 @@
                 </li>
                 <li>
                     <a (click)="op.toggle($event)"><span class="ocul">Notificaciones</span> <i class="fas fa-bell mar"
-                            style="font-size: 1.5rem;" pBadge value="1"></i></a>
+                            style="font-size: 1.5rem;" pBadge [value]="userNoti.length.toString()"></i></a>
                 </li>
                 <p-overlayPanel #op>
-                   <p>Notificaciones</p>
+                    <div *ngFor=" let noti of userNoti " class="noti-cont" [class]="esvisto">
+                        <small> 
+                            <strong>
+                                <i class="fas fa-book"> </i>
+                                {{ noti.titulo }} 
+                            </strong>
+                        </small>
+                        <small>{{noti.mensaje}}</small>
+                        <small class="derecha"> <strong> {{noti.fecha}} </strong></small>
+                    </div>
+                    <hr/>
+                    
+                    <p-button [label]="labelbtn()" icon="fas fa-eye" (onClick)="marcarVisto()"></p-button>
                 </p-overlayPanel>
             </ul>
         </nav>
@@ -38,7 +50,7 @@
 
 
 <div class="search-cont">
-    <div  class="search">
+    <div class="search">
         <p-inputGroup>
             <input type="text" pInputText placeholder="Buscar" />
             <button type="button" pButton icon="fas fa-search"></button>
@@ -48,5 +60,4 @@
 
 <app-resultados></app-resultados>
 
-<app-footer/>
-
+<app-footer />

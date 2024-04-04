@@ -1,4 +1,5 @@
 import { LibroEntitie } from "./Entities/LibroEntities.model";
+import { format } from "@formkit/tempo"
 
 export const librosData: LibroEntitie[] = [
     {
@@ -172,3 +173,26 @@ export const librosData: LibroEntitie[] = [
       ejemplaresDisponible: 2,
     },
   ];
+
+
+
+  export const notificaciones: any[] =[
+    {
+      id: 1,
+      titulo: 'Nuevo libro disponible',
+      mensaje: 'El libro "El amor en los tiempos del cólera" ya está disponible para su préstamo',
+      fecha: format(new Date(), "medium")
+    },
+    {
+      id: 2,
+      titulo: 'Nuevo libro disponible',
+      mensaje: 'El libro "La sombra del viento" ya está disponible para su préstamo',
+      fecha: format(new Date(), "medium")
+    },
+    {
+      id: 3,
+      titulo: 'Nuevo libro disponible',
+      mensaje: 'El libro "El alquimista" ya está disponible para su préstamo',
+      fecha: format(new Date(), "medium")
+    }
+  ]
