@@ -60,6 +60,14 @@ li {
   width: 100%;
   padding: 20px 10px;
 }
+
+h2{
+  font-size: 30px;
+}
+
+.icon-notifig{
+  display: none;
+}
 @media only screen and (max-width: 900px) {
   header {
     padding: 0 30px;
@@ -69,9 +77,20 @@ li {
     display: block;
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 767px) {
   .hamburger {
     display: block;
+  }
+  .icon-notifig{
+    display: block;
+  }
+
+  .icon-ocul{
+    display: none;
+  }
+
+  h2{
+    font-size: 20px;
   }
   
   header nav {

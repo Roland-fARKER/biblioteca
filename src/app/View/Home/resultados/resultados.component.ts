@@ -15,14 +15,10 @@ export class ResultadosComponent{
 
   constructor(private toastService: MessageService) {}
 
-  estadisponible(id: number, ejemplares: number) {
-    if (ejemplares > 0) {
-      return 'Disponible';
-    } else {
-      //realizar consulta al servicio de pretamos para obtener la fecha de cuando estara disponible
-      return 'Hasta 23/04/24';
-    }
+  estadisponible(ejemplares: number): boolean {
+    return ejemplares > 0 ;
   }
+
 
   agregarFavorito(nombre: string) {
     if (this.favoritoClass == 'far fa-bookmark') {

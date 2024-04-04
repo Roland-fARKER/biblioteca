@@ -1,15 +1,18 @@
-<p-toast/>
+<p-toast />
 <div class="cont-res">
     <div *ngFor="let libro of librosIn" class="card">
         <div class="flex1">
             <img *ngIf="libro.urlimage" [src]=" libro.urlimage">
-            <img *ngIf="!libro.urlimage" src="https://media.istockphoto.com/id/1094620944/es/vector/cubierta-de-libro.jpg?s=612x612&w=0&k=20&c=lfplBYn8vKNWUbu-g9eEhwH9atP--ciMw8LXD8hlA54=">
+            <img *ngIf="!libro.urlimage"
+                src="https://media.istockphoto.com/id/1094620944/es/vector/cubierta-de-libro.jpg?s=612x612&w=0&k=20&c=lfplBYn8vKNWUbu-g9eEhwH9atP--ciMw8LXD8hlA54=">
             <div>
                 <p><strong>{{ libro.nombreLibro }}</strong></p>
                 <p> <i class="fas fa-user"></i> {{libro.autorLibro}}</p>
                 <div class="flex">
                     <p> <i class="fas fa-calendar-week"></i> {{libro.anioPublicacion}}</p>
                     <p-tag severity="warning" [value]="libro.nombreCategoria"></p-tag>
+                    <p-tag [severity]="estadisponible(libro.ejemplaresDisponible) ? 'success':'danger' "
+                        [value]="estadisponible(libro.ejemplaresDisponible) ? 'Disponible':'No disponible'"></p-tag>
                 </div>
                 <div class="flex">
                     <p> <i class="fas fa-keyboard"></i> {{libro.editorialLibro}}</p>
@@ -18,10 +21,9 @@
         </div>
         <div class="flex mt">
             <span>
-                <i (click)="agregarFavorito(libro.nombreLibro)"  [class]="favoritoClass" class="text-amarillo" > </i>
+                <i (click)="agregarFavorito(libro.nombreLibro)" [class]="favoritoClass" class="text-amarillo"> </i>
             </span>
-            <p-button [label]="estadisponible( libro.idLibro, libro.ejemplaresDisponible)"
-                icon="fas fa-book" size="small"></p-button>
+            <p-button label="Reservar" icon="fas fa-book" size="small"></p-button>
         </div>
     </div>
 </div>

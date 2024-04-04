@@ -13,27 +13,31 @@
                 <li>
                     <a routerLink="/Login">Login</a>
                 </li>
-                <li>
-                    <a (click)="op.toggle($event)"><span class="ocul">Notificaciones</span> <i class="fas fa-bell mar"
-                            style="font-size: 1.5rem;" pBadge [value]="userNoti.length.toString()"></i></a>
+                <li class="icon-ocul">
+                    <a (click)="op.toggle($event)"><i class="fas fa-bell mar" style="font-size: 1.5rem;" pBadge
+                            [value]="userNoti.length.toString()"></i></a>
                 </li>
                 <p-overlayPanel #op>
                     <div *ngFor=" let noti of userNoti " class="noti-cont" [class]="esvisto">
-                        <small> 
+                        <small>
                             <strong>
                                 <i class="fas fa-book"> </i>
-                                {{ noti.titulo }} 
+                                {{ noti.titulo }}
                             </strong>
                         </small>
                         <small>{{noti.mensaje}}</small>
                         <small class="derecha"> <strong> {{noti.fecha}} </strong></small>
                     </div>
-                    <hr/>
-                    
-                    <p-button styleClass="width: 100%;" [label]="labelbtn()" icon="fas fa-eye" (onClick)="marcarVisto()"></p-button>
+                    <hr />
+
+                    <p-button [label]="labelbtn()" icon="fas fa-eye" (onClick)="marcarVisto()"></p-button>
                 </p-overlayPanel>
             </ul>
         </nav>
+        <li class="icon-notifig">
+            <a (click)="op.toggle($event)"><span class="ocul">Notificaciones</span> <i class="fas fa-bell mar"
+                    style="font-size: 1.5rem;" pBadge [value]="userNoti.length.toString()"></i></a>
+        </li>
         <label for="nav_check" class="hamburger">
             <div></div>
             <div></div>
@@ -43,7 +47,7 @@
     <div class="ban">
         <div class="fondo-opaco"></div>
         <div class="text-cont">
-      
+
             <h2>“Una biblioteca no es un lujo, sino una de las necesidades de la vida”.</h2>
             <small><strong>Henry Ward Beecher</strong></small>
         </div>
@@ -60,8 +64,6 @@
     </div>
 </div>
 
-<app-resultados [librosIn]="librosfil" ></app-resultados>
+<app-resultados [librosIn]="librosfil"></app-resultados>
 
 <app-footer />
-
-
