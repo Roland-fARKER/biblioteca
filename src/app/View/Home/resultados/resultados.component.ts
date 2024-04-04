@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { LibroEntitie } from '../../../Models/Entities/LibroEntities.model';
 import { MessageService } from 'primeng/api'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resultados',
@@ -13,10 +14,14 @@ export class ResultadosComponent{
 
   favoritoClass: string = 'far fa-bookmark';
 
-  constructor(private toastService: MessageService) {}
+  constructor(private toastService: MessageService, private _router:Router ) {}
 
   estadisponible(ejemplares: number): boolean {
     return ejemplares > 0 ;
+  }
+
+  solicitudPrestamo( index : number){
+    this._router.navigate(['/Detalle'],{ queryParams: { id: index} });
   }
 
 

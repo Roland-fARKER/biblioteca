@@ -1,0 +1,53 @@
+<p-toast></p-toast>
+<div class="back">
+    <div class="container">
+        <div class="info">
+            <img class="uimg" [src]="libro.urlimage" />
+
+            <div>
+                <h2>{{libro.nombreLibro}}</h2>
+                <p> <i class="fas fa-pencil-alt"></i> {{libro.autorLibro}}</p>
+                <div>
+                    <div class="info alc">
+                        <p> <i class="fas fa-calendar-alt"></i> {{libro.anioPublicacion}}</p>
+                        <p-tag severity="warning" [value]="libro.nombreCategoria"></p-tag>
+                    </div>
+                    <p> <i class="fas fa-keyboard"></i> {{libro.editorialLibro}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="textc">Solicitud del prestamos del libro</h3>
+
+            <div class="info">
+                <div>
+                    <p><strong>Fecha de Salida</strong></p>
+                    <p-calendar [(ngModel)]="fechaSalida" [showIcon]="true" inputId="buttondisplay"></p-calendar>
+                </div>
+                <div>
+                    <p> <strong> Fecha de entrada</strong></p>
+                    <p-calendar [(ngModel)]="fechaEntrega" [showIcon]="true" inputId="buttondisplay"></p-calendar>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <h3><i class="fas fa-exclamation"></i> Recuerda</h3>
+            <ul>
+                <li>Debes cuidar el libro.</li>
+                <li>Evitar manchar o resarlar contenido.</li>
+                <li>Entregar el libro en tiepo y forma.</li>
+                <li>Si no se cumple la fecha de esntrega se te multará.</li>
+                <li>Tu actividad y cumplimiento se premiará con medallas.</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 10px; display: flex; justify-content: end;">
+            <p-button (onClick)="grabarSolicitud()" label="Reservar" icon="fas fa-book" size="small"></p-button>
+        </div>
+
+    </div>
+    <div style="height: 50px;">
+
+    </div>

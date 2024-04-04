@@ -198,18 +198,21 @@ export const librosData: LibroEntitie[] = [
       id: 1,
       titulo: 'Nuevo libro disponible',
       mensaje: 'El libro "El amor en los tiempos del cólera" ya está disponible para su préstamo',
-      fecha: format(new Date(), "medium")
+      fecha: format(new Date(), "medium"),
+      leida: false
     },
     {
       id: 2,
       titulo: 'Nuevo libro disponible',
       mensaje: 'El libro "La sombra del viento" ya está disponible para su préstamo',
-      fecha: format(new Date(), "medium")
+      fecha: format(new Date(), "medium"),
+      leida: false
     },
     {
       id: 3,
       titulo: 'Nuevo libro disponible',
       mensaje: 'El libro "El alquimista" ya está disponible para su préstamo',
-      fecha: format(new Date(), "medium")
+      fecha: format(new Date(), "medium"),
+      leida: false
     }
   ]

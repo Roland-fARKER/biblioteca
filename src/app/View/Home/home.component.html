@@ -22,7 +22,8 @@
                         <img src="../../../assets/pictures/noNotification.svg" />
                         <p>No tienes notificaciones pendientes</p>
                     </div>
-                    <div *ngFor=" let noti of userNoti ; let index = index" class="noti-cont" [class]="esvisto">
+                    <div *ngFor=" let noti of userNoti ; let index = index" class="noti-cont"
+                        [class]="leida(noti.leida)">
                         <small>
                             <strong>
                                 <i class="fas fa-book"> </i>
@@ -32,12 +33,13 @@
                         <small>{{noti.mensaje}}</small>
                         <div class="flex">
                             <small class="derecha"> <strong> {{noti.fecha}} </strong></small>
-                            <i (click)="deleteNoti(index)" class="fas fa-times icon-red"></i>
+                            <div style="display: flex; gap: 10px;">
+                                <i (click)="deleteNoti(index)" class="fas fa-times icon-red"></i>
+                                <i (click)="marcarVisto(index)" class="fas fa-check icon-green"></i>
+                            </div>
                         </div>
                     </div>
                     <hr />
-
-                    <p-button [label]="labelbtn()" icon="fas fa-eye" (onClick)="marcarVisto()"></p-button>
                 </p-overlayPanel>
             </ul>
         </nav>

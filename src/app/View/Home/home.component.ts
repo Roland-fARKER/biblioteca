@@ -44,12 +44,12 @@ export class HomeComponent {
     this.userNoti.splice(index, 1);
   }
 
-  marcarVisto() {
-    if (this.esvisto == 'novisto') {
-      this.esvisto = 'visto';
-    } else {
-      this.esvisto = 'novisto';
-    }
+  marcarVisto(index:number){
+    this.userNoti[index].leida = !this.userNoti[index].leida;
+  }
+
+  leida(visto: boolean): string {
+    return visto ? 'visto' : 'novisto';
   }
   hayNotificaciones(){
     return this.userNoti.length > 0;

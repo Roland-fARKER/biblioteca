@@ -1,6 +1,6 @@
 <p-toast />
 <div class="cont-res">
-    <div *ngFor="let libro of librosIn" class="card">
+    <div *ngFor="let libro of librosIn ; let index = index" class="card">
         <div class="flex1">
             <img *ngIf="libro.urlimage" [src]=" libro.urlimage">
             <img *ngIf="!libro.urlimage"
@@ -23,7 +23,7 @@
             <span>
                 <i (click)="agregarFavorito(libro.nombreLibro)" [class]="favoritoClass" class="text-amarillo"> </i>
             </span>
-            <p-button label="Reservar" icon="fas fa-book" size="small"></p-button>
+            <p-button (onClick)="solicitudPrestamo(index)" label="Reservar" [disabled]="!estadisponible(libro.ejemplaresDisponible)" icon="fas fa-book" size="small"></p-button>
         </div>
     </div>
 </div>

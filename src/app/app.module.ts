@@ -13,6 +13,7 @@ import { HomeComponent } from './View/Home/home.component';
 import { Animations3dComponent } from './View/animations3d/animations3d.component';
 import { ResultadosComponent } from './View/Home/resultados/resultados.component';
 import { FooterComponent } from './View/Home/footer/footer.component';
+import { DetalleComponent } from './View/Home/detalle/detalle.component';
 
 //primeng
 import { ButtonModule } from 'primeng/button';
@@ -24,6 +25,9 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { TagModule } from 'primeng/tag';
+import { CalendarModule } from 'primeng/calendar';
+import { TabViewModule } from 'primeng/tabview';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { TagModule } from 'primeng/tag';
     HomeComponent,
     Animations3dComponent,
     ResultadosComponent,
-    FooterComponent
+    FooterComponent,
+    DetalleComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,10 @@ import { TagModule } from 'primeng/tag';
     InputTextModule,
     ToastModule,
     FormsModule,
-    TagModule
+    TagModule,
+    CalendarModule,
+    TabViewModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

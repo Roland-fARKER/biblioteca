@@ -210,3 +210,8 @@ h3{
   color: red;
   cursor: pointer;
 }
+
+.icon-green{
+  color: var(--verde);
+  cursor: pointer;
+}
