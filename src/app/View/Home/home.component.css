@@ -199,5 +199,14 @@ h3{
   color: #fff;
   position: absolute;
   text-align: center;
+}
 
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-red{
+  color: red;
+  cursor: pointer;
 }

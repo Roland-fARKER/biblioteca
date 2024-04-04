@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { notificaciones } from '../../Models/librosData';
 import { librosData } from '../../Models/librosData';
 import { LibroEntitie } from '../../Models/Entities/LibroEntities.model';
-import { compileDeclareInjectableFromMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -41,12 +40,19 @@ export class HomeComponent {
     }
   }
 
+  deleteNoti( index: number){
+    this.userNoti.splice(index, 1);
+  }
+
   marcarVisto() {
     if (this.esvisto == 'novisto') {
       this.esvisto = 'visto';
     } else {
       this.esvisto = 'novisto';
     }
+  }
+  hayNotificaciones(){
+    return this.userNoti.length > 0;
   }
 
   labelbtn() {

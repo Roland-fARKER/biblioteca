@@ -18,7 +18,11 @@
                             [value]="userNoti.length.toString()"></i></a>
                 </li>
                 <p-overlayPanel #op>
-                    <div *ngFor=" let noti of userNoti " class="noti-cont" [class]="esvisto">
+                    <div *ngIf="!hayNotificaciones()">
+                        <img src="../../../assets/pictures/noNotification.svg" />
+                        <p>No tienes notificaciones pendientes</p>
+                    </div>
+                    <div *ngFor=" let noti of userNoti ; let index = index" class="noti-cont" [class]="esvisto">
                         <small>
                             <strong>
                                 <i class="fas fa-book"> </i>
@@ -26,7 +30,10 @@
                             </strong>
                         </small>
                         <small>{{noti.mensaje}}</small>
-                        <small class="derecha"> <strong> {{noti.fecha}} </strong></small>
+                        <div class="flex">
+                            <small class="derecha"> <strong> {{noti.fecha}} </strong></small>
+                            <i (click)="deleteNoti(index)" class="fas fa-times icon-red"></i>
+                        </div>
                     </div>
                     <hr />
 
