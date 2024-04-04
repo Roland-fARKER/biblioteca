@@ -52,12 +52,14 @@
 <div class="search-cont">
     <div class="search">
         <p-inputGroup>
-            <input type="text" pInputText placeholder="Buscar" />
+            <input (input)="onFilter()" [(ngModel)]="busqueda" type="text" pInputText placeholder="Buscar" />
             <button type="button" pButton icon="fas fa-search"></button>
         </p-inputGroup>
     </div>
 </div>
 
-<app-resultados></app-resultados>
+<app-resultados [librosIn]="librosfil" ></app-resultados>
 
 <app-footer />
+
+

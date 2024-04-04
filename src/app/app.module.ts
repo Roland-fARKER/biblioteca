@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 //componentes
 import { LoginComponent } from './View/Account/login/login.component';
@@ -44,7 +45,8 @@ import { ToastModule } from 'primeng/toast';
     InputGroupModule,
     InputGroupAddonModule,
     InputTextModule,
-    ToastModule
+    ToastModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

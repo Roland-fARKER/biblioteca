@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LibroEntitie } from '../../../Models/Entities/LibroEntities.model';
-import { librosData } from '../../../Models/librosData';
 import { MessageService } from 'primeng/api'; 
 
 @Component({
@@ -9,10 +8,10 @@ import { MessageService } from 'primeng/api';
   styleUrl: './resultados.component.css',
   providers:[MessageService]
 })
-export class ResultadosComponent {
-  favoritoClass: string = 'far fa-bookmark';
+export class ResultadosComponent{
+  @Input() librosIn:LibroEntitie[] = [];
 
-  libros: LibroEntitie[] = librosData;
+  favoritoClass: string = 'far fa-bookmark';
 
   constructor(private toastService: MessageService) {}
 
