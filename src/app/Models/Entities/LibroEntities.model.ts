@@ -8,4 +8,5 @@ export interface LibroEntitie{
     nombreCategoria?: string;  
     ejemplaresDisponible: number;
     urlimage?: string;
+    esFavorito: boolean;
 }

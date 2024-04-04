@@ -12,6 +12,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1967,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 5,
+      esFavorito:false,
     },
     {
       idLibro: 2,
@@ -23,6 +24,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1605,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 0,
+      esFavorito:false,
     },
     {
       idLibro: 3,
@@ -34,6 +36,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1949,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 0,
+      esFavorito:false,
     },
     {
       idLibro: 4,
@@ -45,17 +48,19 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1943,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 0,
+      esFavorito:false,
     },
     {
       idLibro: 5,
       nombreLibro: 'Orgullo y prejuicio',
       autorLibro: 'Jane Austen',
       editorialLibro: 'Editorial Thomas Egerton',
-      urlimage:'https://pics.filmaffinity.com/Orgullo_y_prejuicio-629327318-large.jpg',
+      urlimage:'https://i0.wp.com/www.cinemanet.info/wp-content/uploads/2012/12/orgulloprejuicio_frontal-210x300.jpg?resize=200%2C300',
       idCategoria: 1,
       anioPublicacion: 1813,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 1,
+      esFavorito:false,
     },
     {
       idLibro: 6,
@@ -67,6 +72,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1995,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 2,
+      esFavorito:false,
     },
     {
       idLibro: 7,
@@ -78,6 +84,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1925,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 3,
+      esFavorito:false,
     },
     {
       idLibro: 8,
@@ -89,6 +96,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1960,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 4,
+      esFavorito:false,
     },
     {
       idLibro: 9,
@@ -100,6 +108,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1866,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 2,
+      esFavorito:false,
     },
     {
       idLibro: 10,
@@ -111,6 +120,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1954,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 3,
+      esFavorito:false,
     },
     {
       idLibro: 11,
@@ -122,6 +132,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1981,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 2,
+      esFavorito:false,
     },
     {
       idLibro: 12,
@@ -133,6 +144,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1985,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 3,
+      esFavorito:false,
     },
     {
       idLibro: 13,
@@ -144,6 +156,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 2001,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 4,
+      esFavorito:false,
     },
     {
       idLibro: 14,
@@ -155,6 +168,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1988,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 2,
+      esFavorito:false,
     },
     {
       idLibro: 15,
@@ -166,6 +180,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1963,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 3,
+      esFavorito:false,
     },
     {
       idLibro: 16,
@@ -177,6 +192,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 1989,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 4,
+      esFavorito:false,
     },
     {
       idLibro: 17,
@@ -188,6 +204,7 @@ export const librosData: LibroEntitie[] = [
       anioPublicacion: 2003,
       nombreCategoria: 'Novela',
       ejemplaresDisponible: 2,
+      esFavorito:false,
     },
   ];
 

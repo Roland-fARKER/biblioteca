@@ -73,6 +73,10 @@
     </div>
 </div>
 
+<div *ngIf="librosfil.length == 0" style="display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%;">
+    <img class="notfound" src="../../../assets/pictures/nofound.svg" />
+    <h3>upss aun no lo encontramos...</h3>
+</div>
 <app-resultados [librosIn]="librosfil"></app-resultados>
 
 <app-footer />

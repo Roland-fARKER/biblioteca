@@ -85,6 +85,7 @@ h2{
     display: block;
   }
 
+
   .icon-ocul{
     display: none;
   }
@@ -166,6 +167,11 @@ a{
   padding: 10px;
   border-radius: 5px;
 }
+
+.notfound{
+  width: 300px;
+  transition: ease-in-out 1s;
+ }
 
 .novisto{
   background-color: var(--verde2);

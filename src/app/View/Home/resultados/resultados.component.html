@@ -21,7 +21,7 @@
         </div>
         <div class="flex mt">
             <span>
-                <i (click)="agregarFavorito(libro.nombreLibro)" [class]="favoritoClass" class="text-amarillo"> </i>
+                <i (click)="libroFavorito(index, libro.nombreLibro)" [class]="esFavorito(index) ? 'fas fa-bookmark':'far fa-bookmark' " class="text-amarillo"> </i>
             </span>
             <p-button (onClick)="solicitudPrestamo(index)" label="Reservar" [disabled]="!estadisponible(libro.ejemplaresDisponible)" icon="fas fa-book" size="small"></p-button>
         </div>
