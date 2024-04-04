@@ -155,12 +155,16 @@ a{
 
 .novisto{
   background-color: var(--verde2);
+  border: 2px solid var(--verde2);
+  transition: ease-in-out 1s;
 }
 
 .visto{
   border: 2px solid var(--verde2);
+  transition: ease-in-out 0.5s;
 }
 
 .derecha{
   text-align: right;
 }
+
