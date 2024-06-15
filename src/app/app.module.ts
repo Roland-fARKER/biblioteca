@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { AuthModule } from '@angular/fire/auth';
+import { FirestoreModule } from '@angular/fire/firestore';
+import { apiConfig } from '../app/api.config';
+import { FirebaseApp } from '@angular/fire/app';
 
 //componentes
 import { LoginComponent } from './View/Account/login/login.component';
@@ -57,9 +62,11 @@ import { TableModule } from 'primeng/table';
     TagModule,
     CalendarModule,
     TabViewModule,
-    TableModule
+    TableModule,
+    AuthModule,
+    FirestoreModule,
   ],
-  providers: [],
+  providers: [ provideFirebaseApp(() => initializeApp(apiConfig.firebaseConfig)) ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
