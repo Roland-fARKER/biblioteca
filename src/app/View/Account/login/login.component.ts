@@ -22,6 +22,8 @@ export class LoginComponent {
 
   signUpMode: boolean = false;
 
+  isloading: boolean = false;
+
   constructor(
     private auth: Auth,
     private firestore: Firestore,
@@ -77,6 +79,7 @@ export class LoginComponent {
   }
 
   async login() {
+    this.isloading = true;
     try {
       const userCredential = await signInWithEmailAndPassword(
         this.auth,
@@ -94,6 +97,8 @@ export class LoginComponent {
         // Guardar el token de usuario y el rol en localStorage
         localStorage.setItem('userToken', await user.getIdToken());
         localStorage.setItem('userRole', userRole);
+
+        this.isloading = true;
         
 
         this.router.navigate(['/']); // Redirigir al usuario a la página principal

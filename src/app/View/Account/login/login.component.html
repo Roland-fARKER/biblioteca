@@ -1,5 +1,6 @@
 <div class="container" [ngClass]="{'sign-up-mode': signUpMode}">
   <p-toast />
+  <app-loader *ngIf="isloading" />
   <div class="forms-container">
     <div class="signin-signup">
       <form class="sign-in-form" (ngSubmit)="login()">
