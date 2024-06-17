@@ -1,36 +1,37 @@
 <div class="container" [ngClass]="{'sign-up-mode': signUpMode}">
+  <p-toast />
   <div class="forms-container">
     <div class="signin-signup">
       <form class="sign-in-form" (ngSubmit)="login()">
         <h2 class="title">Inicia Sesión</h2>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Correo electrónico" [(ngModel)]="loginEmail" name="loginEmail" required />
+          <input type="email" placeholder="Correo electronico" [(ngModel)]="email" name="email" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Contraseña" [(ngModel)]="loginPassword" name="loginPassword" required />
+          <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" />
         </div>
         <input type="submit" value="Login" class="btn solid" />
       </form>
-
-      <form class="sign-up-form" (ngSubmit)="register()">
+      <form class="sign-up-form" (ngSubmit)="signUp()">
         <h2 class="title">Registro</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Nombre" [(ngModel)]="registerName" name="registerName" required />
+          <input type="text" placeholder="Nombre" [(ngModel)]="name" name="name" />
         </div>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Correo electrónico" [(ngModel)]="registerEmail" name="registerEmail" required />
+          <input type="email" placeholder="Correo electronico" [(ngModel)]="email" name="email" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Contraseña" [(ngModel)]="registerPassword" name="registerPassword" required />
+          <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="registerConfirmPassword" name="registerConfirmPassword" required />
+          <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="confirmPassword"
+            name="confirmPassword" />
         </div>
         <input type="submit" class="btn" value="Registrarse" />
       </form>
@@ -41,7 +42,10 @@
     <div class="panel left-panel">
       <div class="content">
         <h3>Nuevo por acá?</h3>
-        <p>Es un gusto poder tenerte por acá, si no tienes una cuenta, regístrate y comienza a disfrutar de nuestros servicios.</p>
+        <p>
+          Es un gusto poder tenerte por acá, si no tienes una cuenta, registrate y comienza a disfrutar de nuestros
+          servicios.
+        </p>
         <button class="btn transparent" (click)="toggleSignUp()">Registrarse</button>
       </div>
       <img src="../../../../assets/pictures/fondo1.svg" class="image" alt="" />
@@ -49,7 +53,9 @@
     <div class="panel right-panel">
       <div class="content">
         <h3>Ya estás registrado?</h3>
-        <p>Es un gusto tenerte de vuelta, inicia sesión para poder disfrutar de nuestros servicios.</p>
+        <p>
+          Es un gusto tenerte de vuelta, inicia sesión para poder disfrutar de nuestros servicios.
+        </p>
         <button class="btn transparent" (click)="toggleSignUp()">Inicio de sesión</button>
       </div>
       <img src="../../../../assets/pictures/fondo2.svg" class="image" alt="" />

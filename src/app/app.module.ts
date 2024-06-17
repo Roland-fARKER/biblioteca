@@ -32,10 +32,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { from } from 'rxjs';
 
 // Firebase configuration
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment';  // Asegúrate de tener la configuración de Firebase en environment.ts
 
 @NgModule({
   declarations: [
@@ -66,12 +65,13 @@ import { environment } from '../environments/environment';
     CalendarModule,
     TabViewModule,
     TableModule,
-    ConfirmDialogModule,
+    ConfirmDialogModule
+  ],
+  providers: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

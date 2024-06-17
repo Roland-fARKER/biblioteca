@@ -1,65 +1,110 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Auth } from '@angular/fire/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService],
 })
 export class LoginComponent {
-  signUpMode: boolean = false;
-  loginEmail: string = '';
-  loginPassword: string = '';
-  registerName: string = '';
-  registerEmail: string = '';
-  registerPassword: string = '';
-  registerConfirmPassword: string = '';
+  email: string = '';
+  password: string = '';
+  confirmPassword: string = '';
+  name: string = '';
 
-  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore, private router: Router) {}
+  signUpMode: boolean = false;
+
+  constructor(
+    private auth: Auth,
+    private firestore: Firestore,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   toggleSignUp() {
     this.signUpMode = !this.signUpMode;
   }
 
-  async register() {
-    if (this.registerPassword !== this.registerConfirmPassword) {
-      alert('Las contraseñas no coinciden');
+  async signUp() {
+    if (this.password !== this.confirmPassword) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error al registrar usuario',
+        detail: 'Las contraseñas no coinciden.',
+      });
       return;
     }
 
     try {
-      const userCredential = await this.afAuth.createUserWithEmailAndPassword(this.registerEmail, this.registerPassword);
+      const userCredential = await createUserWithEmailAndPassword(
+        this.auth,
+        this.email,
+        this.password
+      );
       const user = userCredential.user;
 
-      if (user) {
-        await this.firestore.collection('users').doc(user.uid).set({
-          name: this.registerName,
-          email: this.registerEmail,
-          role: 'user'
-        });
-        alert('Registro exitoso');
-        this.toggleSignUp(); // Switch back to login form
-      }
+      // Guardar datos en Firestore
+      await setDoc(doc(this.firestore, `users/${user.uid}`), {
+        name: this.name,
+        email: this.email,
+        role: 'user',
+      });
+
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Éxito al registrar usuario',
+        detail: 'Se guardaron los registros en la base de datos.',
+      });
+
+      this.router.navigate(['/']); // Redirigir al usuario a la página principal
     } catch (error) {
-      console.error('Error en el registro:', error);
-      alert('Error en el registro');
+      console.error('Error al registrar usuario: ', error);
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error al registrar usuario',
+        detail: 'Ocurrio un error desconocido',
+      });
     }
   }
 
   async login() {
     try {
-      const userCredential = await this.afAuth.signInWithEmailAndPassword(this.loginEmail, this.loginPassword);
+      const userCredential = await signInWithEmailAndPassword(
+        this.auth,
+        this.email,
+        this.password
+      );
       const user = userCredential.user;
 
-      if (user) {
-        alert('Login exitoso');
-        this.router.navigate(['/']);
-      }
+      // Guardar el token de usuario en localStorage
+      localStorage.setItem('userToken', await user.getIdToken());
+
+      this.router.navigate(['/']); // Redirigir al usuario a la página principal
     } catch (error) {
-      console.error('Error en el login:', error);
-      alert('Error en el login');
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error al iniciar sesión',
+        detail: 'Ocurrio un error desconocido',
+      });
     }
+  }
+
+  logout() {
+    // Limpiar el token de usuario al cerrar sesión
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']); // Redirigir al usuario a la página de inicio de sesión
+  }
+
+  isLoggedIn(): boolean {
+    // Verificar si el usuario está actualmente autenticado
+    return !!localStorage.getItem('userToken');
   }
 }
