@@ -17,7 +17,7 @@ import { Animations3dComponent } from './View/animations3d/animations3d.componen
 import { ResultadosComponent } from './View/Home/resultados/resultados.component';
 import { FooterComponent } from './View/Home/footer/footer.component';
 import { DetalleComponent } from './View/Home/detalle/detalle.component';
-
+import { adminPanel } from '../Admin/adminpanel.component';
 //primeng
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
@@ -46,6 +46,7 @@ import { environment } from '../environments/environment';  // Asegúrate de ten
     ResultadosComponent,
     FooterComponent,
     DetalleComponent,
+    adminPanel
   ],
   imports: [
     BrowserModule,

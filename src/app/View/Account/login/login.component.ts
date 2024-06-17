@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 
@@ -55,6 +55,7 @@ export class LoginComponent {
       await setDoc(doc(this.firestore, `users/${user.uid}`), {
         name: this.name,
         email: this.email,
+        avatarId: 1,
         role: 'user',
       });
 
@@ -70,7 +71,7 @@ export class LoginComponent {
       this.messageService.add({
         severity: 'error',
         summary: 'Error al registrar usuario',
-        detail: 'Ocurrio un error desconocido',
+        detail: 'Ocurrió un error desconocido',
       });
     }
   }
@@ -84,22 +85,35 @@ export class LoginComponent {
       );
       const user = userCredential.user;
 
-      // Guardar el token de usuario en localStorage
-      localStorage.setItem('userToken', await user.getIdToken());
+      // Obtener el documento de usuario desde Firestore para obtener el rol
+      const userDoc = await getDoc(doc(this.firestore, `users/${user.uid}`));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const userRole = userData['role'] || 'user';
 
-      this.router.navigate(['/']); // Redirigir al usuario a la página principal
+        // Guardar el token de usuario y el rol en localStorage
+        localStorage.setItem('userToken', await user.getIdToken());
+        localStorage.setItem('userRole', userRole);
+        
+
+        this.router.navigate(['/']); // Redirigir al usuario a la página principal
+      } else {
+        throw new Error('Documento de usuario no encontrado en Firestore');
+      }
     } catch (error) {
+      console.error('Error al iniciar sesión: ', error);
       this.messageService.add({
         severity: 'error',
         summary: 'Error al iniciar sesión',
-        detail: 'Ocurrio un error desconocido',
+        detail: 'Ocurrió un error desconocido',
       });
     }
   }
 
   logout() {
-    // Limpiar el token de usuario al cerrar sesión
+    // Limpiar el token de usuario y el rol al cerrar sesión
     localStorage.removeItem('userToken');
+    localStorage.removeItem('userRole');
     this.router.navigate(['/login']); // Redirigir al usuario a la página de inicio de sesión
   }
 

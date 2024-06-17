@@ -5,14 +5,14 @@
                 <i class="fas fa-arrow-left"></i>
             </div>
             <img class="avatar"
-                src="https://marketplace.canva.com/EAFmXSny51I/1/0/1600w/canva-avatar-foto-de-perfil-mujer-dibujo-ilustrado-moderno-rojo-1Fscw8oj1-Q.jpg" />
+                [src]="ObtenerAvatar( currentUser ? currentUser.avatarId : 6 )" />
             <div class="bt" (click)="alInicio()">
                 <i class="fas fa-pen"></i>
             </div>
         </div>
         <div class="data-user">
-            <h3>Nombre usuario</h3>
-            <small>nombreusuario&#64;correo.com</small>
+            <h3>{{ currentUser ? currentUser.name : 'username' }}</h3>
+            <small>{{ currentUser ? currentUser.email : 'username' }} </small>
         </div>
         <div class="items-user">
             <div class="item">
