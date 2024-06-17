@@ -1,4 +1,6 @@
 <div class="h-cont">
+    <p-toast />
+    <p-confirmDialog />
     <header>
         <div class="logo">Biblioteca</div>
         <input type="checkbox" id="nav_check" hidden>
@@ -11,7 +13,7 @@
                     <a routerLink="/Profile">Perfil</a>
                 </li>
                 <li>
-                    <a routerLink="/Login">Cerrar sesión</a>
+                    <a href="#" (click)="confirm1($event)">Cerrar sesión</a>
                 </li>
                 <li class="icon-ocul">
                     <a (click)="op.toggle($event)"><i class="fas fa-bell mar" style="font-size: 1.5rem;" pBadge

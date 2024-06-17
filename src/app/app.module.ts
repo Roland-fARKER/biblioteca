@@ -33,6 +33,7 @@ import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { TableModule } from 'primeng/table';
     TableModule,
     AuthModule,
     FirestoreModule,
+    ConfirmDialogModule
   ],
   providers: [ provideFirebaseApp(() => initializeApp(apiConfig.firebaseConfig)) ],
   bootstrap: [AppComponent],

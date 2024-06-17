@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { notificaciones } from '../../Models/librosData';
 import { librosData } from '../../Models/librosData';
 import { LibroEntitie } from '../../Models/Entities/LibroEntities.model';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
+  providers: [ConfirmationService, MessageService]
 })
 export class HomeComponent {
   esvisto: string = 'novisto';
@@ -15,6 +17,9 @@ export class HomeComponent {
   librosfil: LibroEntitie[] = [];
 
   busqueda: string = '';
+
+  constructor(private confirmationService: ConfirmationService, 
+              private messageService: MessageService) {}
 
   ngOnInit() {
     this.libros = librosData;
@@ -62,4 +67,35 @@ export class HomeComponent {
       return 'Marcar como no leido';
     }
   }
+
+  confirm1(event: Event) {
+    const currentHour = new Date().getHours();
+    const detailMessage = currentHour >= 18 || currentHour < 6 ? 'Buenas noches' : 'Ten un buen día';
+
+    this.confirmationService.confirm({
+        target: event.target as EventTarget,
+        message: 'Estas seguro de cerrar la sesión ?',
+        header: 'Confirmación',
+        icon: 'fas fa-exclamation-triangle',
+        acceptIcon:"fas fa-door-open",
+        rejectIcon:"fas fa-times",
+        rejectLabel:"No",
+        acceptLabel:"Si",
+        //rejectButtonStyleClass:"p-button-text",
+        accept: () => {
+            this.messageService.add({ 
+              severity: 'info', 
+              summary: 'Hasta pronto', 
+              detail: detailMessage
+            });
+        },
+        reject: () => {
+            this.messageService.add({ 
+              severity: 'error', 
+              summary: 'Acción cancelada', 
+              detail: 'Cancelaste el cierre de sesión.', 
+              life: 3000 });
+        }
+    });
+}
 }
