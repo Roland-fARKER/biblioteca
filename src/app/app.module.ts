@@ -6,10 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { AuthModule } from '@angular/fire/auth';
-import { FirestoreModule } from '@angular/fire/firestore';
-import { apiConfig } from '../app/api.config';
-import { FirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 //componentes
 import { LoginComponent } from './View/Account/login/login.component';
@@ -34,6 +32,10 @@ import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { from } from 'rxjs';
+
+// Firebase configuration
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -64,11 +66,12 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     CalendarModule,
     TabViewModule,
     TableModule,
-    AuthModule,
-    FirestoreModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
-  providers: [ provideFirebaseApp(() => initializeApp(apiConfig.firebaseConfig)) ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
