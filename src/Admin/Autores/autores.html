@@ -1,0 +1,74 @@
+<p-toast></p-toast>
+<p-confirmDialog />
+<p-button icon="fas fa-plus" label="Agregar Autor" (onClick)="hidenFormAu = !hidenFormAu"></p-button>
+<p-table [value]="autores" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>País</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-autor>
+    <tr>
+      <td>{{ autor.id }}</td>
+      <td>{{ autor.Nombre }}</td>
+      <td>{{ autor.pais }}</td>
+      <td>
+        <div style="display: flex; gap: 5px;">
+            <p-button icon="fas fa-trash-alt" [rounded]="true" severity="danger" (onClick)="eliminarAutor(autor.id)" />
+            <p-button icon="fas fa-pencil-alt" [rounded]="true" severity="info" (onClick)="editarAutorModal(autor)" />
+        </div>
+    </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog header="Nuevo Autor" [(visible)]="hidenFormAu" [modal]="true" [style]="{ width: '25rem' }">
+  <form [formGroup]="autorForm" (ngSubmit)="agregarAutor()">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="Nombre">Nombre</label>
+        <input id="Nombre" type="text" pInputText formControlName="Nombre"/>
+        <div *ngIf="autorForm.controls['Nombre'].invalid && autorForm.controls['Nombre'].touched">
+          <small class="p-error">Nombre es requerido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="pais">País</label>
+        <input id="pais" type="text" pInputText formControlName="pais"/>
+        <div *ngIf="autorForm.controls['pais'].invalid && autorForm.controls['pais'].touched">
+          <small class="p-error">País es requerido.</small>
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <p-button label="Agregar" icon="pi pi-check" type="submit" [disabled]="autorForm.invalid"></p-button>
+    </p-footer>
+  </form>
+</p-dialog>
+
+<p-dialog header="Actualizar autor" [(visible)]="hidenEditAu" [modal]="true" [style]="{ width: '25rem' }">
+    <form [formGroup]="editForm" >
+        <div class="p-fluid">
+        <div class="p-field">
+            <label for="Nombre">Nombre</label>
+            <input id="Nombre" type="text" pInputText formControlName="Nombre"/>
+            <div *ngIf="autorForm.controls['Nombre'].invalid && autorForm.controls['Nombre'].touched">
+            <small class="p-error">Nombre es requerido.</small>
+            </div>
+        </div>
+        <div class="p-field">
+            <label for="pais">País</label>
+            <input id="pais" type="text" pInputText formControlName="pais"/>
+            <div *ngIf="autorForm.controls['pais'].invalid && autorForm.controls['pais'].touched">
+            <small class="p-error">País es requerido.</small>
+            </div>
+        </div>
+        </div>
+        <p-footer>
+        <p-button label="Actualizar" icon="pi pi-check" (onClick)="editarAutor()" ></p-button>
+        </p-footer>
+    </form>
+</p-dialog>

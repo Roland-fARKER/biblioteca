@@ -1,12 +1,20 @@
 <div class="cont">
+    <p-toast></p-toast>
+    <p-dialog [draggable]="false" header="Seleciona un avatar." [modal]="true" [(visible)]="hidenmodal" [style]="{ width: '25rem' }">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+            <div *ngFor="let avatar of avataresList" style="width: 120px;">
+              <img class="avatarsel" [src]="avatar.url" (click)="changeAvatar(avatar.id)"  style="width: 100%;" />
+            </div>
+          </div>
+    </p-dialog>
     <div class="cont-info">
         <div class="data-header">
             <div class="bt" (click)="alInicio()">
                 <i class="fas fa-arrow-left"></i>
             </div>
             <img class="avatar"
-                [src]="ObtenerAvatar( currentUser ? currentUser.avatarId : 6 )" />
-            <div class="bt" (click)="alInicio()">
+                [src]="obtenerAvatar( currentUser ? currentUser.avatarId : 0 )" />
+            <div class="bt" (click)="hidenmodal = !hidenmodal">
                 <i class="fas fa-pen"></i>
             </div>
         </div>
@@ -111,7 +119,7 @@
                         <ng-template pTemplate="body" let-prestamo>
                             <tr>
                                 <td>{{ prestamo.nombreLibro }}</td>
-                                <td><p-tag [severity]="getseverty(prestamo.estado)" [value]="prestamo.estado"></p-tag></td>
+                                <td><p-tag [severity]="getSeverity(prestamo.estado)" [value]="prestamo.estado"></p-tag></td>
                                 <td>{{ prestamo.fechaSalida }}</td>
                                 <td>{{ prestamo.fechaEntrega }}</td>
                             </tr>

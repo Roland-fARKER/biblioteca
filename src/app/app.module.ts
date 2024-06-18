@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //componentes
 import { LoginComponent } from './View/Account/login/login.component';
@@ -17,8 +18,10 @@ import { Animations3dComponent } from './View/animations3d/animations3d.componen
 import { ResultadosComponent } from './View/Home/resultados/resultados.component';
 import { FooterComponent } from './View/Home/footer/footer.component';
 import { DetalleComponent } from './View/Home/detalle/detalle.component';
-import { adminPanel } from '../Admin/adminpanel.component';
+import { AdminPanel } from '../Admin/adminpanel.component';
 import { LoaderComponent } from './loader/loader.component';
+import { AutoresPad } from '../Admin/Autores/autores';
+import { EditorialesPad } from '../Admin/editoriales/editoriales';
 
 //primeng
 import { ButtonModule } from 'primeng/button';
@@ -34,6 +37,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
 
 // Firebase configuration
 import { environment } from '../environments/environment';  // Asegúrate de tener la configuración de Firebase en environment.ts
@@ -48,8 +52,10 @@ import { environment } from '../environments/environment';  // Asegúrate de ten
     ResultadosComponent,
     FooterComponent,
     DetalleComponent,
-    adminPanel,
-    LoaderComponent
+    AdminPanel,
+    LoaderComponent,
+    AutoresPad,
+    EditorialesPad
   ],
   imports: [
     BrowserModule,
@@ -69,7 +75,9 @@ import { environment } from '../environments/environment';  // Asegúrate de ten
     CalendarModule,
     TabViewModule,
     TableModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    DialogModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

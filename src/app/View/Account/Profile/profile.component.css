@@ -143,3 +143,14 @@ small {
   background-color: var(--verde);
   color: #fff;
 }
+
+.avatarsel{
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.avatarsel:hover {
+  border: 4px solid var(--verde);
+}

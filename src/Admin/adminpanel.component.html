@@ -1,0 +1,42 @@
+<p-toast />
+<h1>Administración.</h1>
+
+<p-tabView styleClass="tabview-custom">
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i style="font-size: 1rem;" class="fas fa-pencil-alt"></i>
+            &nbsp;
+            <span>Autores</span>
+        </ng-template>
+        <autor-panel/>
+    </p-tabPanel>
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i style="font-size: 1rem;" class="fas fa-keyboard"></i>
+            &nbsp;
+            <span>Editoriales</span>
+        </ng-template>
+        <editorial-panel></editorial-panel>
+    </p-tabPanel>
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i style="font-size: 1rem;" class="fas fa-book"></i>
+            &nbsp;
+            <span>Libros</span>
+        </ng-template>
+    </p-tabPanel>
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i style="font-size: 1rem;" class="fas fa-trophy"></i>
+            &nbsp;
+            <span>Usuarios</span>
+        </ng-template>
+    </p-tabPanel>
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i style="font-size: 1rem;" class="fas fa-trophy"></i>
+            &nbsp;
+            <span>Prestamos</span>
+        </ng-template>
+    </p-tabPanel>
+</p-tabView>

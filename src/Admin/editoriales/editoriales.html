@@ -1,0 +1,74 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<p-button icon="fas fa-plus" label="Agregar Editorial" (onClick)="hidenFormEd = !hidenFormEd"></p-button>
+<p-table [value]="editoriales" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>País</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-editorial>
+    <tr>
+      <td>{{ editorial.id }}</td>
+      <td>{{ editorial.Nombre }}</td>
+      <td>{{ editorial.pais }}</td>
+      <td>
+        <div style="display: flex; gap: 5px;">
+          <p-button icon="fas fa-trash-alt" [rounded]="true" severity="danger" (onClick)="eliminarEditorial(editorial.id)"></p-button>
+          <p-button icon="fas fa-pencil-alt" [rounded]="true" severity="info" (onClick)="editarEditorialModal(editorial)"></p-button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog header="Nueva Editorial" [(visible)]="hidenFormEd" [modal]="true" [style]="{ width: '25rem' }">
+  <form [formGroup]="editorialForm" (ngSubmit)="agregarEditorial()">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="Nombre">Nombre</label>
+        <input id="Nombre" type="text" pInputText formControlName="Nombre"/>
+        <div *ngIf="editorialForm.controls['Nombre'].invalid && editorialForm.controls['Nombre'].touched">
+          <small class="p-error">Nombre es requerido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="pais">País</label>
+        <input id="pais" type="text" pInputText formControlName="pais"/>
+        <div *ngIf="editorialForm.controls['pais'].invalid && editorialForm.controls['pais'].touched">
+          <small class="p-error">País es requerido.</small>
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <p-button label="Agregar" icon="pi pi-check" type="submit" [disabled]="editorialForm.invalid"></p-button>
+    </p-footer>
+  </form>
+</p-dialog>
+
+<p-dialog header="Actualizar Editorial" [(visible)]="hidenEditEd" [modal]="true" [style]="{ width: '25rem' }">
+  <form [formGroup]="editForm">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="Nombre">Nombre</label>
+        <input id="Nombre" type="text" pInputText formControlName="Nombre"/>
+        <div *ngIf="editForm.controls['Nombre'].invalid && editForm.controls['Nombre'].touched">
+          <small class="p-error">Nombre es requerido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="pais">País</label>
+        <input id="pais" type="text" pInputText formControlName="pais"/>
+        <div *ngIf="editForm.controls['pais'].invalid && editForm.controls['pais'].touched">
+          <small class="p-error">País es requerido.</small>
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <p-button label="Actualizar" icon="pi pi-check" (onClick)="editarEditorial()"></p-button>
+    </p-footer>
+  </form>
+</p-dialog>

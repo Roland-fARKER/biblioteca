@@ -1,52 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 
 @Component({
-    selector: 'admin-panel',
-    templateUrl: './adminpanel.component.html',
-    styleUrl: './adminpanel.component.css',
-    providers: [ConfirmationService, MessageService],
-  })
+  selector: 'admin-panel',
+  templateUrl: './adminpanel.component.html',
+  styleUrls: ['./adminpanel.component.css'], // Corrección del nombre de la propiedad
+  providers: [ConfirmationService, MessageService],
+})
+export class AdminPanel implements OnInit {
+  autores: any[] = [];
 
-export class adminPanel{
-    constructor(
-        private confirmationService: ConfirmationService,
-        private messageService: MessageService,
-      ) {}
+  constructor(
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private firestore: Firestore
+  ) {}
+
+  ngOnInit() {
     
-      ngOnInit() {
-        //this.libros = librosData;
-        //this.librosfil = this.libros;
-      }
-    
-      onFilter() {
-        //console.log(this.busqueda);
-        // if (this.busqueda == '') {
-        //   this.libros = librosData;
-        //   this.librosfil = this.libros;
-        //   //console.log(this.librosfil);
-        // } else {
-        //   this.librosfil = this.libros.filter((libro) => {
-        //     return (
-        //       libro.nombreLibro
-        //         .toLowerCase()
-        //         .includes(this.busqueda.toLowerCase()) ||
-        //       libro.autorLibro.toLowerCase().includes(this.busqueda.toLowerCase())
-        //     );
-        //   });
-        //   //console.log(this.librosfil);
-        // }
-      }
-    
-      deleteNoti(index: number) {
-        //this.userNoti.splice(index, 1);
-      }
-    
-      marcarVisto(index: number) {
-        //this.userNoti[index].leida = !this.userNoti[index].leida;
-      }
-    
-      leida(visto: boolean): string {
-        return visto ? 'visto' : 'novisto';
-      }
+  }
+
+  
 }
