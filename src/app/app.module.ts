@@ -22,6 +22,7 @@ import { AdminPanel } from '../Admin/adminpanel.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AutoresPad } from '../Admin/Autores/autores';
 import { EditorialesPad } from '../Admin/editoriales/editoriales';
+import { UsuariosPad } from '../Admin/Usuarios/usuarios';
 
 //primeng
 import { ButtonModule } from 'primeng/button';
@@ -55,7 +56,8 @@ import { environment } from '../environments/environment';  // Asegúrate de ten
     AdminPanel,
     LoaderComponent,
     AutoresPad,
-    EditorialesPad
+    EditorialesPad,
+    UsuariosPad
   ],
   imports: [
     BrowserModule,

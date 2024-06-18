@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -85,7 +85,7 @@ export class ProfileComponent implements OnInit {
 
   async changeAvatar(id: number) {
     try {
-      await setDoc(doc(this.firestore, `users/${this.currentUser.uid}`), {
+      await updateDoc(doc(this.firestore, `users/${this.currentUser.uid}`), {
         avatarId: id,
       });
 

@@ -1,0 +1,107 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+
+<p-button icon="fas fa-plus" label="Agregar Usuario" (onClick)="hidenFormUs = !hidenFormUs"></p-button>
+<p-table [value]="usuarios" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>AvatarId</th>
+      <th>Email</th>
+      <th>Nombre</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-usuario>
+    <tr>
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.avatarId }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>{{ usuario.name }}</td>
+      <td>{{ usuario.role }}</td>
+      <td>
+        <div style="display: flex; gap: 5px;">
+          <p-button icon="fas fa-trash-alt" [rounded]="true" severity="danger" (onClick)="eliminarUsuario(usuario.id)"></p-button>
+          <p-button icon="fas fa-pencil-alt" [rounded]="true" severity="info" (onClick)="editarUsuarioModal(usuario)"></p-button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog header="Nuevo Usuario" [(visible)]="hidenFormUs" [modal]="true" [style]="{ width: '25rem' }">
+  <form [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="avatarId">AvatarId</label>
+        <input id="avatarId" type="number" pInputText formControlName="avatarId"/>
+        <div *ngIf="usuarioForm.controls['avatarId'].invalid && usuarioForm.controls['avatarId'].touched">
+          <small class="p-error">AvatarId es requerido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input id="email" type="text" pInputText formControlName="email"/>
+        <div *ngIf="usuarioForm.controls['email'].invalid && usuarioForm.controls['email'].touched">
+          <small class="p-error">Email es requerido y debe ser válido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" pInputText formControlName="name"/>
+        <div *ngIf="usuarioForm.controls['name'].invalid && usuarioForm.controls['name'].touched">
+          <small class="p-error">Nombre es requerido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="role">Rol</label>
+        <input id="role" type="text" pInputText formControlName="role"/>
+        <div *ngIf="usuarioForm.controls['role'].invalid && usuarioForm.controls['role'].touched">
+          <small class="p-error">Rol es requerido.</small>
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <p-button label="Agregar" icon="pi pi-check" type="submit" [disabled]="usuarioForm.invalid"></p-button>
+    </p-footer>
+  </form>
+</p-dialog>
+
+<p-dialog header="Actualizar Usuario" [(visible)]="hidenEditUs" [modal]="true" [style]="{ width: '25rem' }">
+  <form [formGroup]="editForm">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="avatarId">AvatarId</label>
+        <input id="avatarId" type="number" pInputText formControlName="avatarId"/>
+        <div *ngIf="editForm.controls['avatarId'].invalid && editForm.controls['avatarId'].touched">
+          <small class="p-error">AvatarId es requerido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input id="email" type="text" pInputText formControlName="email"/>
+        <div *ngIf="editForm.controls['email'].invalid && editForm.controls['email'].touched">
+          <small class="p-error">Email es requerido y debe ser válido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" pInputText formControlName="name"/>
+        <div *ngIf="editForm.controls['name'].invalid && editForm.controls['name'].touched">
+          <small class="p-error">Nombre es requerido.</small>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="role">Rol</label>
+        <input id="role" type="text" pInputText formControlName="role"/>
+        <div *ngIf="editForm.controls['role'].invalid && editForm.controls['role'].touched">
+          <small class="p-error">Rol es requerido.</small>
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <p-button label="Actualizar" icon="pi pi-check" (onClick)="editarUsuario()"></p-button>
+    </p-footer>
+  </form>
+</p-dialog>
