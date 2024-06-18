@@ -19,7 +19,14 @@
       <td>{{ usuario.avatarId }}</td>
       <td>{{ usuario.email }}</td>
       <td>{{ usuario.name }}</td>
-      <td>{{ usuario.role }}</td>
+      <td>
+        <div *ngIf="usuario.role === 'admin'" style=" background-color: var(--verde); color: white; border-radius: 5px; padding: 8px; justify-content: center;" >
+          {{usuario.role}}
+        </div>
+        <div *ngIf="usuario.role === 'user'" style=" background-color: #F3d15b; color: black; border-radius: 5px; padding: 8px;" >
+          {{usuario.role}}
+        </div>
+      </td>
       <td>
         <div style="display: flex; gap: 5px;">
           <p-button icon="fas fa-trash-alt" [rounded]="true" severity="danger" (onClick)="eliminarUsuario(usuario.id)"></p-button>
